@@ -1,0 +1,96 @@
+@function calculate-gradient($total, $color-bar, $color-spacing) {
+  $gradients: ();
+  $length: percentage(1 / $total);
+
+  @for $i from 1 to ($total + 1) {
+    $is-not-last-iteration: ($i != $total);
+    $start: ($i - 1) * $length;
+    $end: $i * $length;
+
+    $bar: $color-bar $start, $color-bar calc(#{$end} - #{$step-spacing});
+    $spacing: $color-spacing calc(#{$end} - #{$step-spacing}), $color-spacing $end;
+
+    $gradient: $bar;
+
+    // last entry doesn't have spacing right
+    @if $is-not-last-iteration {
+      $gradient: join($bar, $spacing);
+    }
+
+    $gradients: join($gradients, $gradient, comma);
+  }
+
+  @return $gradients;
+}
+
+$meter-background: #fff;
+$step-background: lightgray;
+$step-foreground: red;
+$step-spacing: 10px;
+
+.wrapper {
+  border: 1px solid black;
+}
+
+.meter {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  height: 1rem;
+  background: $meter-background;
+  background: $step-background;
+
+  // gutter overlay
+  &:after {
+    $gradients: calculate-gradient(3, transparent, $meter-background);
+
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, $gradients);
+    z-index: 55;
+  }
+}
+
+// background
+.meter::-webkit-meter-bar {
+  $gradients: calculate-gradient(3, $step-background, $meter-background);
+
+  background: none;
+  background-color: inherit;
+  background-image: linear-gradient(to right, $gradients);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
+
+// actual-bar
+.meter::-moz-meter-bar {
+  background: none;
+  background-color: $step-foreground;
+  box-shadow: none;
+}
+
+// actual bar
+.meter::-webkit-meter-optimum-value,
+.meter::-webkit-meter-optimum-value,
+.meter::-webkit-meter-suboptimum-value,
+.meter::-webkit-meter-even-less-good-value {
+  background: none;
+  background-color: $step-foreground;
+}
+
+.description {
+  display: flex;
+}
+
+.key {
+  font-weight: bold;
+}
+
+.value {
+  margin: 0;
+}

@@ -36,7 +36,10 @@ function App() {
           <label htmlFor="email">Email</label>
           <input value={email} onChange={handleEmailChange} type="text" name="email" id="email"/>
         </fieldset>
-        <Meter min={1} max={3} value={0} />
+        <Meter min={0} max={3} value={0} />
+        <Meter min={0} max={3} value={1} />
+        <Meter min={0} max={3} value={2} />
+        <Meter min={0} max={3} value={3} />
         <button type="submit">Submit</button>
       </form>
     </div>
