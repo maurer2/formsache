@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+import Meter from './Meter/Meter';
+
 function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,22 +29,16 @@ function App() {
 
   return (
     <div className="App">
-     <form action="#" method="#" onSubmit={handleSubmit}>
+      <form action="#" method="#" onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">Name</label>
           <input value={name} onChange={handleNameChange} type="text" name="name" id="name"/>
           <label htmlFor="email">Email</label>
           <input value={email} onChange={handleEmailChange} type="text" name="email" id="email"/>
         </fieldset>
-        <fieldset>
-          <meter min="0" max="3" value="2" title="Strength"></meter>
-          <dl>
-            <dt>Strength:</dt>
-            <dd>Middle</dd>
-          </dl>
-        </fieldset>
+        <Meter min={1} max={3} value={0} />
         <button type="submit">Submit</button>
-     </form>
+      </form>
     </div>
   );
 }
