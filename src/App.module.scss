@@ -1,5 +1,5 @@
 .form {
-  margin: 2rem auto;
+  margin: auto;
   padding: 1rem;
   border: 1px solid black;
   max-width: 480px;
@@ -29,4 +29,9 @@
   background: black;
   color: #fff;
   text-align: center;
+}
+
+.formButtonIsDisabled {
+  background: gray;
+  color: lightgray;
 }

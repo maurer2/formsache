@@ -27,6 +27,7 @@ $meter-background: #fff;
 $step-background: lightgray;
 $step-foreground: red;
 $step-spacing: 10px;
+$number-of-gradients: 3;
 
 .meter {
   position: relative;
@@ -37,7 +38,7 @@ $step-spacing: 10px;
 
   // gutter overlay
   &:after {
-    $gradients: calculate-gradient(3, transparent, $meter-background);
+    $gradients: calculate-gradient($number-of-gradients, transparent, $meter-background);
 
     content: '';
     position: absolute;
@@ -52,7 +53,7 @@ $step-spacing: 10px;
 
 // background
 .meter::-webkit-meter-bar {
-  $gradients: calculate-gradient(3, $step-background, $meter-background);
+  $gradients: calculate-gradient($number-of-gradients, $step-background, $meter-background);
 
   background: none;
   background-color: inherit;

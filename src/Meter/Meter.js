@@ -3,9 +3,11 @@ import style from './Meter.module.scss';
 
 const Meter = ({ min, max, value }) => {
   const translations = {
+    0: 'invalid',
     1: 'bad',
     2: 'middle',
     3: 'good',
+    4: 'good',
   };
 
   const showDescription = Object.prototype.hasOwnProperty.call(translations, value);
