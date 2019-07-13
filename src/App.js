@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import './App.css';
+import styles from './App.module.scss';
 
 import Meter from './Meter/Meter';
 
 function App() {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleNameChange = (event) => {
+  const handlePasswordChange = (event) => {
     event.preventDefault();
 
     const { value } = event.target;
 
-    setName(value);
+    setPassword(value);
   }
 
   const handleEmailChange = (event) => {
@@ -28,21 +28,38 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form action="#" method="#" onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="name">Name</label>
-          <input value={name} onChange={handleNameChange} type="text" name="name" id="name"/>
-          <label htmlFor="email">Email</label>
-          <input value={email} onChange={handleEmailChange} type="text" name="email" id="email"/>
-        </fieldset>
-        <Meter min={0} max={3} value={0} />
-        <Meter min={0} max={3} value={1} />
-        <Meter min={0} max={3} value={2} />
-        <Meter min={0} max={3} value={3} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <form className={styles.form} onSubmit={handleSubmit} action="#" method="#">
+      <fieldset className={styles.formRow}>
+        <div className={styles.formEntry}>
+          <label>Email</label>
+          <input
+            className={styles.formInput}
+            value={email}
+            onChange={handleEmailChange}
+            type="text"
+            name="email"
+            id="email"
+          />
+        </div>
+        <div className={styles.formEntry}>
+          <label htmlFor="password">Password</label>
+          <input
+            className={styles.formInput}
+            value={password}
+            onChange={handlePasswordChange}
+            type="password"
+            name="password"
+            id="password"
+          />
+        </div>
+      </fieldset>
+      <div className={styles.formRow}>
+        <Meter min={0} max={3} value={2}/>
+      </div>
+      <button className={styles.formButton} type="submit">
+        Submit
+        </button>
+    </form>
   );
 }
 

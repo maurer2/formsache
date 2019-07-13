@@ -28,16 +28,11 @@ $step-background: lightgray;
 $step-foreground: red;
 $step-spacing: 10px;
 
-.wrapper {
-  border: 1px solid black;
-}
-
 .meter {
   position: relative;
-  margin: auto;
-  width: 50%;
+  margin-bottom: 0.5rem;
+  width: 100%;
   height: 1rem;
-  background: $meter-background;
   background: $step-background;
 
   // gutter overlay
@@ -85,12 +80,14 @@ $step-spacing: 10px;
 
 .description {
   display: flex;
+  margin: 0 0 1rem 0;
 }
 
 .key {
-  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 .value {
   margin: 0;
+  font-weight: bold;
 }

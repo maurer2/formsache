@@ -11,7 +11,7 @@ const Meter = ({ min, max, value }) => {
   const showDescription = Object.prototype.hasOwnProperty.call(translations, value);
 
   return (
-    <div className={style.wrapper}>
+    <>
       <meter className={style.meter} min={min} max={max} value={value} />
       { showDescription && (
         <dl className={style.description}>
@@ -19,7 +19,7 @@ const Meter = ({ min, max, value }) => {
           <dd className={style.value}>{translations[value]}</dd>
         </dl>
       )}
-    </div>
+    </>
   );
 };
 
