@@ -42,7 +42,7 @@ function App() {
     const isValidEmail = emailRegex.test(value);
 
     setEmailIsValid(isValidEmail && emailIsNotEmpty);
-  }
+  };
 
   const handlePasswordChange = (event) => {
     event.preventDefault();
@@ -58,7 +58,7 @@ function App() {
 
     setPasswordStrength(score);
     setPasswordIsValid(isValidPasword && passwordIsNotEmpty);
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -92,7 +92,7 @@ function App() {
         />
       </fieldset>
       <div className={styles.formRow}>
-        <Meter value={passwordStrength} min={0} max={3}/>
+        <Meter value={passwordStrength} min={0} max={3} />
       </div>
       <button
         className={`${styles.formButton} ${!formIsSubmittable ? styles.formButtonIsDisabled : ''}`}

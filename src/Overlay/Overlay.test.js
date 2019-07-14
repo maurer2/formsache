@@ -14,4 +14,8 @@ describe('Overlay', () => {
   test('snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('child component exist', () => {
+    expect(wrapper.find('.overlay').exists()).toBe(true);
+  });
 });

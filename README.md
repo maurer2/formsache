@@ -2,7 +2,7 @@
 
 Simple login form
 
-![Screenshot](screenshot.png?raw=true | width=100)
+![Screenshot](screenshot.png?raw=true)
 
 ### Start
 
