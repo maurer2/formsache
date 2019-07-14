@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FormEntry.module.scss';
 
-const FormEntry = ({label, name, value, type, handleChange, isValid})=> (
+const FormEntry = ({ label, name, value, type, handleChange, isValid }) => (
   <div className={`${styles.formEntry} ${isValid ? '' : styles.formEntryIsInvalid} `}>
     <label className={styles.formLabel} htmlFor={name}>
       {label}

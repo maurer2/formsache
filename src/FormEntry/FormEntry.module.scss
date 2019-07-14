@@ -1,26 +1,31 @@
 .formEntry {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   flex-direction: column;
-  color: black;
 }
 
 .formLabel {
   display: flex;
+  margin-bottom: 0.75rem;
 }
 
 .formField {
-  border: 1px solid black;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  min-width: 0;
+  border: 2px solid black;
+  outline-offset: -1px;
 }
 
 .formEntryIsInvalid {
-  color: red;
+  color: #de313f;
 
   .formLabel:after {
     content: '\00d7';
     margin-left: auto;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: bold;
+    line-height: 1;
   }
 
   .formField {

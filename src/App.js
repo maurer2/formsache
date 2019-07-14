@@ -84,7 +84,7 @@ function App() {
         <FormEntry
           label='Password'
           name='password'
-          type='text'
+          type='password'
           value={password}
           handleChange={handlePasswordChange}
           isValid={passwordIsValid}

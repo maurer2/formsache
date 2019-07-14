@@ -1,9 +1,9 @@
 .form {
   position: relative;
   margin: auto;
-  padding: 1rem;
-  border: 1px solid black;
-  max-width: 480px;
+  padding: 1.25rem;
+  border: 2px solid black;
+  max-width: 400px;
 }
 
 .formRow {
@@ -16,14 +16,14 @@
 
 .formButton {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   width: 100%;
+  border: 2px solid black;
   background: black;
-  color: #fff;
+  color: #d4d4d4;
   text-align: center;
 }
 
 .formButtonIsDisabled {
-  background: gray;
-  color: lightgray;
+  opacity: 0.25;
 }
