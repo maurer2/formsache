@@ -26,7 +26,7 @@
 $meter-background: #fff;
 $step-background: lightgray;
 $step-foreground: red;
-$step-spacing: 10px;
+$step-spacing: 0.75rem;
 $number-of-gradients: 3;
 
 .meter {
@@ -35,6 +35,7 @@ $number-of-gradients: 3;
   width: 100%;
   height: 1rem;
   background: $step-background;
+  z-index: 1;
 
   // gutter overlay
   &:after {

@@ -3,6 +3,7 @@ import styles from './App.module.scss';
 
 import Meter from './Meter/Meter';
 import FormEntry from './FormEntry/FormEntry';
+import Overlay from './Overlay/Overlay';
 import {default as passwortStrengthChecker} from 'zxcvbn';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   // submit flag
   const [formIsSubmittable, setFormIsSubmittable] = useState(false);
+  // overlay flag
+  const [showOverlay, setShowOverlay] = useState(false);
 
   // watch submittability of form
   useEffect(() => {
@@ -49,7 +52,7 @@ function App() {
     const passwordIsNotEmpty = password.length > 0;
     const { score } = passwortStrengthChecker(value);
     // contains a number
-    const passwordRegex = new RegExp(/\d/)
+    const passwordRegex = new RegExp(/\d/);
     const isValidPasword = passwordRegex.test(value) && score >= 2;
 
     setPasswordStrength(score);
@@ -59,7 +62,12 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('submit');
+    console.log('qwdqw', formIsSubmittable);
+
+    if (!formIsSubmittable) {
+      return;
+    }
+    setShowOverlay(true);
   };
 
   return (
@@ -87,11 +95,12 @@ function App() {
       </div>
       <button
         className={`${styles.formButton} ${!formIsSubmittable ? styles.formButtonIsDisabled : ''}`}
-        disabled={formIsSubmittable}
+        disabled={!formIsSubmittable}
         type="submit"
       >
         Submit
       </button>
+      { showOverlay && <Overlay message="Login successful!" /> }
     </form>
   );
 }
