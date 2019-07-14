@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './Meter.module.scss';
 
 const Meter = ({ min, max, value }) => {
@@ -26,3 +27,9 @@ const Meter = ({ min, max, value }) => {
 };
 
 export default Meter;
+
+Meter.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};

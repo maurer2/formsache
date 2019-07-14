@@ -1,31 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './App.module.scss';
 
 import Meter from './Meter/Meter';
+import FormEntry from './FormEntry/FormEntry';
 import {default as passwortStrengthChecker} from 'zxcvbn';
 
 function App() {
+  // field values
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // validity flags
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [passwordStrength, setPasswordStrength] = useState(0);
-  const [submitIsDisabled, setSubmitIsDisabled] = useState(true);
+  // submit flag
+  const [formIsSubmittable, setFormIsSubmittable] = useState(false);
 
-  const handlePasswordChange = (event) => {
-    event.preventDefault();
+  // watch submittability of form
+  useEffect(() => {
+    const emailIsFilled = email.length > 0;
+    const passwordIsFilled = password.length > 0;
 
-    const { value } = event.target;
-    const { score } = passwortStrengthChecker(value);
+    const formIsReady = emailIsFilled && emailIsValid && passwordIsValid && passwordIsFilled;
 
-    setPassword(value);
-    setPasswordStrength(score);
-  }
+    setFormIsSubmittable(formIsReady);
+  }, [ email, password ]);
 
   const handleEmailChange = (event) => {
     event.preventDefault();
 
     const { value } = event.target;
-
     setEmail(value);
+
+    const emailIsNotEmpty = email.length > 0;
+    // https://emailregex.com/
+    const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const isValidEmail = emailRegex.test(value);
+
+    setEmailIsValid(isValidEmail && emailIsNotEmpty)
+  }
+
+  const handlePasswordChange = (event) => {
+    event.preventDefault();
+
+    const { value } = event.target;
+    setPassword(value);
+
+    const passwordIsNotEmpty = password.length > 0;
+    const { score } = passwortStrengthChecker(value);
+    // contains a number
+    const passwordRegex = new RegExp(/\d/)
+    const isValidPasword = passwordRegex.test(value) && score >= 2;
+
+    setPasswordStrength(score);
+    setPasswordIsValid(isValidPasword && passwordIsNotEmpty)
   }
 
   const handleSubmit = (event) => {
@@ -34,48 +62,32 @@ function App() {
     console.log('submit');
   };
 
-  const handleFormChange = (event) => {
-    event.preventDefault();
-
-    setSubmitIsDisabled(() => {
-      const passwordIsStrong = passwordStrength > 1;
-
-      return !passwordIsStrong;
-    });
-  };
-
   return (
-    <form className={styles.form} onSubmit={handleSubmit} onChange={handleFormChange} action="#">
+    <form className={styles.form} onSubmit={handleSubmit} action="#" autoComplete="off">
       <fieldset className={styles.formRow}>
-        <div className={styles.formEntry}>
-          <label>Email</label>
-          <input
-            className={styles.formField}
-            value={email}
-            onChange={handleEmailChange}
-            type="text"
-            name="email"
-            id="email"
-          />
-        </div>
-        <div className={styles.formEntry}>
-          <label htmlFor="password">Password</label>
-          <input
-            className={styles.formField}
-            value={password}
-            onChange={handlePasswordChange}
-            type="password"
-            name="password"
-            id="password"
-          />
-        </div>
+        <FormEntry
+          label='E-Mail'
+          name='email'
+          type='text'
+          value={email}
+          handleChange={handleEmailChange}
+          isValid={emailIsValid}
+        />
+        <FormEntry
+          label='Password'
+          name='password'
+          type='text'
+          value={password}
+          handleChange={handlePasswordChange}
+          isValid={passwordIsValid}
+        />
       </fieldset>
       <div className={styles.formRow}>
         <Meter value={passwordStrength} min={0} max={3}/>
       </div>
       <button
-        className={`${styles.formButton} ${submitIsDisabled ? styles.formButtonIsDisabled : ''}`}
-        disabled={submitIsDisabled}
+        className={`${styles.formButton} ${!formIsSubmittable ? styles.formButtonIsDisabled : ''}`}
+        disabled={formIsSubmittable}
         type="submit"
       >
         Submit

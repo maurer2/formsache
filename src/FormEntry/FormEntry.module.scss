@@ -1,0 +1,29 @@
+.formEntry {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  color: black;
+}
+
+.formLabel {
+  display: flex;
+}
+
+.formField {
+  border: 1px solid black;
+}
+
+.formEntryIsInvalid {
+  color: red;
+
+  .formLabel:after {
+    content: '\00d7';
+    margin-left: auto;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .formField {
+    border-color: red;
+  }
+}
