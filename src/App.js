@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styles from './App.module.scss';
+import { default as passwortStrengthChecker } from 'zxcvbn';
 
 import Meter from './Meter/Meter';
 import FormEntry from './FormEntry/FormEntry';
 import Overlay from './Overlay/Overlay';
-import {default as passwortStrengthChecker} from 'zxcvbn';
+
+import styles from './App.module.scss';
 
 function App() {
   // field values
@@ -40,7 +41,7 @@ function App() {
     const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     const isValidEmail = emailRegex.test(value);
 
-    setEmailIsValid(isValidEmail && emailIsNotEmpty)
+    setEmailIsValid(isValidEmail && emailIsNotEmpty);
   }
 
   const handlePasswordChange = (event) => {
@@ -56,13 +57,11 @@ function App() {
     const isValidPasword = passwordRegex.test(value) && score >= 2;
 
     setPasswordStrength(score);
-    setPasswordIsValid(isValidPasword && passwordIsNotEmpty)
+    setPasswordIsValid(isValidPasword && passwordIsNotEmpty);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    console.log('qwdqw', formIsSubmittable);
 
     if (!formIsSubmittable) {
       return;
@@ -74,19 +73,19 @@ function App() {
     <form className={styles.form} onSubmit={handleSubmit} action="#" autoComplete="off">
       <fieldset className={styles.formRow}>
         <FormEntry
-          label='E-Mail'
-          name='email'
-          type='text'
-          placeholder='test@test.de'
+          label="E-Mail"
+          name="email"
+          type="text"
+          placeholder="test@test.de"
           value={email}
           handleChange={handleEmailChange}
           isValid={emailIsValid}
         />
         <FormEntry
-          label='Password'
-          name='password'
-          type='password'
-          placeholder='Must contain a number'
+          label="Password"
+          name="password"
+          type="password"
+          placeholder="Must contain a number"
           value={password}
           handleChange={handlePasswordChange}
           isValid={passwordIsValid}

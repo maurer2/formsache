@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import Overlay from './Overlay';
 
-describe('App', () => {
+describe('Overlay', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<Overlay
+      message="Mewo Meow"
+    />);
   });
 
   test('snapshot', () => {

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshot 1`] = `
+<form
+  action="#"
+  autoComplete="off"
+  className="form"
+  onSubmit={[Function]}
+>
+  <fieldset
+    className="formRow"
+  >
+    <FormEntry
+      handleChange={[Function]}
+      isValid={true}
+      label="E-Mail"
+      name="email"
+      placeholder="test@test.de"
+      type="text"
+      value=""
+    />
+    <FormEntry
+      handleChange={[Function]}
+      isValid={true}
+      label="Password"
+      name="password"
+      placeholder="Must contain a number"
+      type="password"
+      value=""
+    />
+  </fieldset>
+  <div
+    className="formRow"
+  >
+    <Meter
+      max={3}
+      min={0}
+      value={0}
+    />
+  </div>
+  <button
+    className="formButton formButtonIsDisabled"
+    disabled={true}
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;

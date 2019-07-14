@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormEntry snapshot 1`] = `
+<div
+  className="formEntry  "
+>
+  <label
+    className="formLabel"
+    htmlFor="cat"
+  >
+    Cat
+  </label>
+  <input
+    className="formField"
+    id="cat"
+    name="cat"
+    onChange={[MockFunction]}
+    placeholder="Sir Meows a lot"
+    type="text"
+    value="purrfect"
+  />
+</div>
+`;

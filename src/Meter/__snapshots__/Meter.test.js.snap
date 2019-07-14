@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meter snapshot 1`] = `
+<Fragment>
+  <meter
+    className="meter"
+    max={3}
+    min={0}
+    value={2}
+  />
+  <dl
+    className="description"
+  >
+    <dt
+      className="key"
+    >
+      Strength:
+    </dt>
+    <dd
+      className="value"
+    >
+      average
+    </dd>
+  </dl>
+</Fragment>
+`;

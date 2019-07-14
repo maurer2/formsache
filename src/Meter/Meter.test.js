@@ -1,12 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import Meter from './Meter';
 
-describe('App', () => {
+describe('Meter', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<Meter
+      min={0}
+      max={3}
+      value={2}
+    />);
   });
 
   test('snapshot', () => {
