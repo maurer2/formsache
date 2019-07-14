@@ -77,6 +77,7 @@ function App() {
           label='E-Mail'
           name='email'
           type='text'
+          placeholder='test@test.de'
           value={email}
           handleChange={handleEmailChange}
           isValid={emailIsValid}
@@ -85,6 +86,7 @@ function App() {
           label='Password'
           name='password'
           type='password'
+          placeholder='Must contain a number'
           value={password}
           handleChange={handlePasswordChange}
           isValid={passwordIsValid}

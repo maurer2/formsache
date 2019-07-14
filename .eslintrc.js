@@ -15,17 +15,17 @@ module.exports = {
         ]
       }
     ],
-    "jsx-a11y/label-has-for": [ "warning", {
+    "jsx-a11y/label-has-for": [ "warn", {
       "required": {
         "some": [ "nesting", "id"  ]
       }
     }],
-    "jsx-a11y/label-has-associated-control": [ "warning", {
+    "jsx-a11y/label-has-associated-control": [ "warn", {
       "required": {
         "some": [ "nesting", "id"  ]
       }
-    }]
-    "object-curly-newline": ["warning", {
+    }],
+    "object-curly-newline": ["warn", {
       "ObjectExpression": "always",
       "ObjectPattern": { "multiline": true },
       "ImportDeclaration": "never",

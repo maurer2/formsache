@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FormEntry.module.scss';
 
-const FormEntry = ({ label, name, value, type, handleChange, isValid }) => (
-  <div className={`${styles.formEntry} ${isValid ? '' : styles.formEntryIsInvalid} `}>
+const FormEntry = ({ label, name, value, type, handleChange, isValid, placeholder }) => (
+  <div className={`${styles.formEntry} ${!isValid ? styles.formEntryIsInvalid : ''} `}>
     <label className={styles.formLabel} htmlFor={name}>
       {label}
     </label>
@@ -14,6 +14,7 @@ const FormEntry = ({ label, name, value, type, handleChange, isValid }) => (
       type={type}
       name={name}
       id={name}
+      placeholder={placeholder}
     />
   </div>
 );
@@ -27,4 +28,5 @@ FormEntry.propTypes = {
   type: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   isValid: PropTypes.bool.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
