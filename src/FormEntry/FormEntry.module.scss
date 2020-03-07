@@ -15,6 +15,7 @@
   min-width: 0;
   border: 2px solid black;
   outline-offset: -1px;
+  font-size: 100%; // restore old normalize behaviour
 }
 
 .formEntryIsInvalid {
